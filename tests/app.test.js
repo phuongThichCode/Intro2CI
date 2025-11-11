@@ -51,6 +51,52 @@ describe('API Endpoints', () => {
       expect(typeof response.body.uptime).toBe('number');
       expect(response.body.uptime).toBeGreaterThanOrEqual(0);
     });
+
+    it('should use environment variables when set', async () => {
+      // Set environment variables
+      const originalEnv = process.env.NODE_ENV;
+      const originalStage = process.env.STAGE;
+      const originalVersion = process.env.npm_package_version;
+      
+      process.env.NODE_ENV = 'production';
+      process.env.STAGE = 'production';
+      process.env.npm_package_version = '2.0.0';
+      
+      const response = await request(app).get('/status');
+      
+      expect(response.status).toBe(200);
+      expect(response.body.environment).toBe('production');
+      expect(response.body.stage).toBe('production');
+      expect(response.body.version).toBe('2.0.0');
+      
+      // Restore original environment variables
+      process.env.NODE_ENV = originalEnv;
+      process.env.STAGE = originalStage;
+      process.env.npm_package_version = originalVersion;
+    });
+
+    it('should use default values when environment variables are not set', async () => {
+      // Temporarily remove environment variables
+      const originalEnv = process.env.NODE_ENV;
+      const originalStage = process.env.STAGE;
+      const originalVersion = process.env.npm_package_version;
+      
+      delete process.env.NODE_ENV;
+      delete process.env.STAGE;
+      delete process.env.npm_package_version;
+      
+      const response = await request(app).get('/status');
+      
+      expect(response.status).toBe(200);
+      expect(response.body.environment).toBe('development');
+      expect(response.body.stage).toBe('dev');
+      expect(response.body.version).toBe('1.0.0');
+      
+      // Restore original environment variables
+      process.env.NODE_ENV = originalEnv;
+      process.env.STAGE = originalStage;
+      process.env.npm_package_version = originalVersion;
+    });
   });
 
   describe('Non-existent routes', () => {
@@ -61,4 +107,3 @@ describe('API Endpoints', () => {
     });
   });
 });
-
