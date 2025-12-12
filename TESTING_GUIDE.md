@@ -1,4 +1,4 @@
-# CI/CD Pipeline Testing Guide
+]# CI/CD Pipeline Testing Guide
 
 This guide documents the complete setup and testing process for the Intro2CI CI/CD pipeline using GitHub Actions and Render.
 
@@ -16,11 +16,11 @@ This guide documents the complete setup and testing process for the Intro2CI CI/
 
 ## Prerequisites
 
-- ✅ GitHub account with repository access
-- ✅ Docker Hub account
-- ✅ Render account
-- ✅ Git installed locally
-- ✅ Node.js 18+ installed locally
+- GitHub account with repository access
+- Docker Hub account
+-  Render account
+-  Git installed locally
+-  Node.js 18+ installed locally
 
 ---
 
@@ -373,11 +373,11 @@ git push origin v1.0.0
 ```
 
 **Expected Results:**
-- ✅ Tests run successfully
-- ✅ Docker image built with TWO tags:
+- Tests run successfully
+- Docker image built with TWO tags:
   - `<username>/intro2ci:v1.0.0` (version-specific)
   - `<username>/intro2ci:production` (latest production)
-- ✅ Deployed to Render production environment
+- Deployed to Render production environment
 
 **Verify:**
 1. **GitHub Actions:** All jobs complete (test → build-and-push → deploy-production)
@@ -650,14 +650,14 @@ npm start
 
 After completing all steps, you should have:
 
-- ✅ Git repository with `dev` and `main` branches
-- ✅ 5 GitHub Secrets configured
-- ✅ Docker Hub repository created
-- ✅ 3 Render web services running (dev, staging, production)
-- ✅ GitHub Actions enabled and running workflows
-- ✅ Successful test deployments to all environments
-- ✅ All API endpoints responding correctly
-- ✅ Docker images with correct tags in Docker Hub
+- Git repository with `dev` and `main` branches
+- 5 GitHub Secrets configured
+- Docker Hub repository created
+- 3 Render web services running (dev, staging, production)
+- GitHub Actions enabled and running workflows
+- Successful test deployments to all environments
+- All API endpoints responding correctly
+- Docker images with correct tags in Docker Hub
 
 ---
 
