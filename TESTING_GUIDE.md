@@ -1,4 +1,4 @@
-]# CI/CD Pipeline Testing Guide
+# CI/CD Pipeline Testing Guide
 
 This guide documents the complete setup and testing process for the Intro2CI CI/CD pipeline using GitHub Actions and Render.
 
